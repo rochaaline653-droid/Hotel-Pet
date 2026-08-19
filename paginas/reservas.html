@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Hotel Pet</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="reservas.html">Hotel Pet</a></div>
+        <div class="usuario-topo">
+            <span>◯</span>
+            <a href="perfil.html">João da Silva</a>
+        </div>
+    </header>
+
+    <aside>
+        <nav aria-label="Menu principal">
+            <ul>
+                <li class=""><a href="pets.html">Pets</a></li>
+                <li class=""><a href="usuarios.html">Usuários</a></li>
+                <li class=""><a href="configuracoes.html">Configurações</a></li>
+                <li class="active"><a href="reservas.html">Reservas</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">Home / Reservas</div>
+        
+<section class="conteudo">
+    <h1>Reservas</h1>
+    <p><a href="nova-reserva.html">+ Nova reserva</a></p>
+
+    <form>
+        <div class="grid-2">
+            <div>
+                <label for="res-id">Id</label>
+                <input id="res-id" type="text">
+            </div>
+            <div>
+                <label>Período</label>
+                <input type="date" aria-label="Data inicial">
+                <input type="date" aria-label="Data final">
+            </div>
+            <div>
+                <label for="proprietario">Proprietário</label>
+                <input id="proprietario" type="text">
+            </div>
+            <div>
+                <label>Total</label>
+                <input type="text" value="R$ 0,00" readonly>
+                <input type="text" value="R$ 0,00" readonly>
+            </div>
+            <div>
+                <label for="status">Status</label>
+                <select id="status">
+                    <option value="">Selecione</option>
+                    <option>Reservada</option>
+                    <option>Em progresso</option>
+                    <option>Finalizada</option>
+                </select>
+            </div>
+            <div>
+                <label for="pet">Pet</label>
+                <input id="pet" type="text">
+            </div>
+        </div>
+        <button type="submit">Pesquisar</button>
+        <button type="reset">Limpar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>Id</th>
+                <th>Pet</th>
+                <th>Chegada</th>
+                <th>Partida</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" checked></td>
+                <td>12349984501</td>
+                <td>Max</td>
+                <td>02/06/2021</td>
+                <td>07/05/2020</td>
+                <td>Reservada</td>
+                <td>R$ 40,00</td>
+                <td><a href="editar-reserva.html">Editar</a> | <a href="visualizar-reserva.html">Visualizar</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>12349984501</td>
+                <td>Ginger</td>
+                <td>02/06/2021</td>
+                <td>07/05/2020</td>
+                <td>Em progresso</td>
+                <td>R$ 40,00</td>
+                <td><a href="editar-reserva.html">Editar</a> | <a href="visualizar-reserva.html">Visualizar</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>12349984501</td>
+                <td>Max</td>
+                <td>02/06/2021</td>
+                <td>07/05/2020</td>
+                <td>Finalizada</td>
+                <td>R$ 40,00</td>
+                <td><a href="editar-reserva-finalizada.html">Editar</a> | <a href="visualizar-reserva.html">Visualizar</a></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    </main>
+</body>
+</html>
