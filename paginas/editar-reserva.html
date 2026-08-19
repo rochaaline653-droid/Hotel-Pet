@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reservas / editar reserva - Hotel Pet</title>
+    <link rel="stylesheet" href="../style.css">
+    
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="reservas.html">Hotel Pet</a></div>
+        <div class="usuario-topo">
+            <span>◯</span>
+            <a href="perfil.html">João da Silva</a>
+        </div>
+    </header>
+
+    <aside>
+        <nav aria-label="Menu principal">
+            <ul>
+                <li class=""><a href="pets.html">Pets</a></li>
+                <li class=""><a href="usuarios.html">Usuários</a></li>
+                <li class=""><a href="configuracoes.html">Configurações</a></li>
+                <li class="active"><a href="reservas.html">Reservas</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">Home / reservas / editar reserva</div>
+        
+<section class="conteudo">
+    <h1>Editar reserva</h1>
+    <form action="reservas.html">
+        <label for="prop">Proprietário *</label>
+        <input id="prop" type="text" value="João da Silva">
+
+        <label for="pet">Pet *</label>
+        <input id="pet" type="text" value="Max">
+
+        <label>Período *</label>
+        <input type="date" value="2021-05-02">
+        <input type="date" value="2021-05-07">
+
+        <label for="notas">Notas</label>
+        <textarea id="notas" rows="4">Lorem ipsum dolor sit amet, consectetur et adipisicing elit.</textarea>
+
+        <label for="status">Status *</label>
+        <select id="status">
+            <option>Em andamento</option>
+            <option>Reservada</option>
+            <option>Finalizada</option>
+        </select>
+
+        <label for="anotacoes">Anotações do funcionário</label>
+        <textarea id="anotacoes" rows="4">Lorem ipsum dolor sit amet, consectetur et adipisicing elit.</textarea>
+
+        <div>
+            <span>Imagem</span>
+            <input type="file" accept="image/*">
+        </div>
+
+        <p>Total das diárias: <strong>R$ 40,00</strong></p>
+        <button type="submit">Salvar</button>
+        <button type="reset">Limpar</button>
+    </form>
+</section>
+
+    </main>
+</body>
+</html>
