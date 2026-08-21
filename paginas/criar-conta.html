@@ -1,27 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Conta - Hotel Pet</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Hotel Pet - Criar Conta</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
-<body
-    <main>
-        <section>
+
+<body>
+
+    <main class="login-container">
+
+        <section class="login-apresentacao">
+
+            <img src="../imagens/cachorro-login.jpeg"
+                alt="Cachorro do Hotel Pet">
+
             <h1>Hotel Pet</h1>
-            <h2>Criar Conta</h2>
-            <form action="reservas.html">
-                <label for="email">Email</label>
-                <input id="email" type="email" name="email" placeholder="Email">
+
+            <p>
+                Todo o carinho que ele merece, com a tranquilidade que você precisa.
+            </p>
+
+        </section>
+
+
+        <section class="login-formulario">
+
+            <h2>Hotel Pet</h2>
+
+            <h3>Criar conta</h3>
+
+            <form action="pets.html">
+
+                <label for="nome">Nome completo</label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+
+                <label for="email">E-mail</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                >
+
+                <label for="telefone">Telefone</label>
+
+                <input
+                    type="tel"
+                    id="telefone"
+                    placeholder="Digite seu telefone"
+                    required
+                >
 
                 <label for="senha">Senha</label>
-                <input id="senha" type="password" name="senha" placeholder="Senha">
 
-                <button type="submit">Criar conta</button>
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
+
+                <label for="confirmar">
+                    Confirmar senha
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmar"
+                    placeholder="Confirme sua senha"
+                    required
+                >
+
+                <button type="submit">
+                    Criar conta
+                </button>
+
             </form>
-            <a href="../index.html">Já tenho uma conta</a>
+
+            <p class="link-conta">
+                Já possui uma conta?
+                <a href="../index.html">
+                    Voltar para o login
+                </a>
+            </p>
+
         </section>
+
     </main>
+
 </body>
+
 </html>

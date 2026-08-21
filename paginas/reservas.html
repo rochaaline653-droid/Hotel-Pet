@@ -1,124 +1,203 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas - Hotel Pet</title>
+    <title>Hotel Pet - Reservas</title>
     <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
-    <header>
-        <div class="logo"><a href="reservas.html">Hotel Pet</a></div>
-        <div class="usuario-topo">
-            <span>◯</span>
-            <a href="perfil.html">João da Silva</a>
+
+<header class="topo">
+
+    <div class="logo">Hotel Pet</div>
+
+    <nav>
+        <a href="pets.html">Pets</a>
+        <a href="reservas.html" class="ativo">Reservas</a>
+        <a href="usuarios.html">Usuários</a>
+        <a href="configuracoes.html">Configurações</a>
+    </nav>
+
+    <div class="usuario-topo">
+        <span>Gerente</span>
+        <a href="perfil.html">Perfil</a>
+        <a href="../index.html">Sair</a>
+    </div>
+
+</header>
+
+
+<main class="conteudo">
+
+    <div class="cabecalho-pagina">
+
+        <div>
+            <h1>Reservas</h1>
+
+            <p>
+                Gerencie todas as reservas do Hotel Pet.
+            </p>
         </div>
-    </header>
 
-    <aside>
-        <nav aria-label="Menu principal">
-            <ul>
-                <li class=""><a href="pets.html">Pets</a></li>
-                <li class=""><a href="usuarios.html">Usuários</a></li>
-                <li class=""><a href="configuracoes.html">Configurações</a></li>
-                <li class="active"><a href="reservas.html">Reservas</a></li>
-            </ul>
-        </nav>
-    </aside>
+        <a href="nova-reserva.html"
+            class="botao">
+            + Nova Reserva
+        </a>
 
-    <main>
-        <div class="breadcrumb">Home / Reservas</div>
-        
-<section class="conteudo">
-    <h1>Reservas</h1>
-    <p><a href="nova-reserva.html">+ Nova reserva</a></p>
+    </div>
 
-    <form>
-        <div class="grid-2">
-            <div>
-                <label for="res-id">Id</label>
-                <input id="res-id" type="text">
-            </div>
-            <div>
-                <label>Período</label>
-                <input type="date" aria-label="Data inicial">
-                <input type="date" aria-label="Data final">
-            </div>
-            <div>
-                <label for="proprietario">Proprietário</label>
-                <input id="proprietario" type="text">
-            </div>
-            <div>
-                <label>Total</label>
-                <input type="text" value="R$ 0,00" readonly>
-                <input type="text" value="R$ 0,00" readonly>
-            </div>
-            <div>
-                <label for="status">Status</label>
-                <select id="status">
-                    <option value="">Selecione</option>
-                    <option>Reservada</option>
-                    <option>Em progresso</option>
-                    <option>Finalizada</option>
-                </select>
-            </div>
-            <div>
-                <label for="pet">Pet</label>
-                <input id="pet" type="text">
-            </div>
-        </div>
-        <button type="submit">Pesquisar</button>
-        <button type="reset">Limpar</button>
-    </form>
 
-    <table>
-        <thead>
-            <tr>
-                <th><input type="checkbox"></th>
-                <th>Id</th>
-                <th>Pet</th>
-                <th>Chegada</th>
-                <th>Partida</th>
-                <th>Status</th>
-                <th>Total</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td>12349984501</td>
-                <td>Max</td>
-                <td>02/06/2021</td>
-                <td>07/05/2020</td>
-                <td>Reservada</td>
-                <td>R$ 40,00</td>
-                <td><a href="editar-reserva.html">Editar</a> | <a href="visualizar-reserva.html">Visualizar</a></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>12349984501</td>
-                <td>Ginger</td>
-                <td>02/06/2021</td>
-                <td>07/05/2020</td>
-                <td>Em progresso</td>
-                <td>R$ 40,00</td>
-                <td><a href="editar-reserva.html">Editar</a> | <a href="visualizar-reserva.html">Visualizar</a></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>12349984501</td>
-                <td>Max</td>
-                <td>02/06/2021</td>
-                <td>07/05/2020</td>
-                <td>Finalizada</td>
-                <td>R$ 40,00</td>
-                <td><a href="editar-reserva-finalizada.html">Editar</a> | <a href="visualizar-reserva.html">Visualizar</a></td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+    <section class="filtros">
 
-    </main>
+        <label for="pesquisa">
+            Pesquisar
+        </label>
+
+        <input
+            type="search"
+            id="pesquisa"
+            placeholder="Pet ou proprietário">
+
+        <label for="status">
+            Status
+        </label>
+
+        <select id="status">
+            <option>Todos</option>
+            <option>Reservada</option>
+            <option>Hospedado</option>
+            <option>Finalizada</option>
+        </select>
+
+    </section>
+
+
+    <section class="tabela-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Pet</th>
+                    <th>Proprietário</th>
+                    <th>Entrada</th>
+                    <th>Saída</th>
+                    <th>Diárias</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Max</td>
+                    <td>Ana Souza</td>
+                    <td>25/08/2026</td>
+                    <td>28/08/2026</td>
+                    <td>3</td>
+                    <td>R$ 150,00</td>
+                    <td>
+                        <span class="status reservado">
+                            Reservada
+                        </span>
+                    </td>
+                    <td>
+                        <a href="visualizar-reserva.html">
+                            Visualizar
+                        </a>
+                        <br>
+                        <a href="editar-reserva.html">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Lulu</td>
+                    <td>Bruno Silva</td>
+                    <td>26/08/2026</td>
+                    <td>30/08/2026</td>
+                    <td>4</td>
+                    <td>R$ 200,00</td>
+                    <td>
+                        <span class="status hospedado">
+                            Hospedado
+                        </span>
+                    </td>
+                    <td>
+                        <a href="visualizar-reserva.html">
+                            Visualizar
+                        </a>
+                        <br>
+                        <a href="editar-reserva.html">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Zico</td>
+                    <td>Carla Oliveira</td>
+                    <td>01/09/2026</td>
+                    <td>05/09/2026</td>
+                    <td>4</td>
+                    <td>R$ 200,00</td>
+                    <td>
+                        <span class="status reservado">
+                            Reservada
+                        </span>
+                    </td>
+                    <td>
+                        <a href="visualizar-reserva.html">
+                            Visualizar
+                        </a>
+                        <br>
+                        <a href="editar-reserva.html">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Nina</td>
+                    <td>Daniel Santos</td>
+                    <td>10/09/2026</td>
+                    <td>13/09/2026</td>
+                    <td>3</td>
+                    <td>R$ 150,00</td>
+                    <td>
+                        <span class="status finalizado">
+                            Finalizada
+                        </span>
+                    </td>
+                    <td>
+                        <a href="visualizar-reserva.html">
+                            Visualizar
+                        </a>
+                        <br>
+                        <a href="editar-reserva-finalizada.html">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</main>
+
 </body>
 </html>

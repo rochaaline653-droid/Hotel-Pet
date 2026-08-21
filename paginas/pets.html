@@ -1,91 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pets - Hotel Pet</title>
-    <link rel="stylesheet" href="..style.css">
+    <title>Hotel Pet - Pets</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
-    <header>
-        <div class="logo"><a href="reservas.html">Hotel Pet</a></div>
-        <div class="usuario-topo">
-            <span>◯</span>
-            <a href="perfil.html">João da Silva</a>
+
+<header class="topo">
+
+    <div class="logo">
+        Hotel Pet
+    </div>
+
+    <nav>
+        <a href="pets.html" class="ativo">Pets</a>
+        <a href="reservas.html">Reservas</a>
+        <a href="usuarios.html">Usuários</a>
+        <a href="configuracoes.html">Configurações</a>
+    </nav>
+
+    <div class="usuario-topo">
+        <span>Gerente</span>
+        <a href="perfil.html">Perfil</a>
+        <a href="../index.html">Sair</a>
+    </div>
+
+</header>
+
+
+<main class="conteudo">
+
+    <div class="cabecalho-pagina">
+
+        <div>
+            <h1>Pets</h1>
+            <p>Gerencie os Pets cadastrados no Hotel Pet.</p>
         </div>
-    </header>
 
-    <aside>
-        <nav aria-label="Menu principal">
-            <ul>
-                <li class="active"><a href="pets.html">Pets</a></li>
-                <li class=""><a href="usuarios.html">Usuários</a></li>
-                <li class=""><a href="configuracoes.html">Configurações</a></li>
-                <li class=""><a href="reservas.html">Reservas</a></li>
-            </ul>
-        </nav>
-    </aside>
+        <a href="cadastrar-pet.html" class="botao">
+    + Novo Pet
+        </a>
 
-    <main>
-        <div class="breadcrumb">Home / Pets</div>
-        
-<section class="conteudo">
-    <h1>Pets</h1>
-    <p><a href="cadastrar-pet.html">+ Novo Pet</a></p>
-    <form>
-        <div class="grid-2">
-            <div>
-                <label for="pet-id">Id</label>
-                <input id="pet-id" type="text">
-                <label for="pet-nome">Nome</label>
-                <input id="pet-nome" type="text">
-            </div>
-            <div>
-                <label for="raca">Raça</label>
-                <input id="raca" type="text">
-                <label for="tamanho">Tamanho</label>
-                <input id="tamanho" type="text">
-            </div>
-        </div>
-        <button type="submit">Pesquisar</button>
-        <button type="reset">Limpar</button>
-    </form>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th><input type="checkbox"></th>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Tipo</th>
-                <th>Raça</th>
-                <th>Tamanho</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td>12349984501</td>
-                <td>Max</td>
-                <td>Cachorro</td>
-                <td>Pastor Alemão</td>
-                <td>Grande</td>
-                <td><a href="editar-pet.html">Editar</a> | <a href="visualizar-pet.html">Visualizar</a></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>12349984501</td>
-                <td>Ginger</td>
-                <td>Gato</td>
-                <td>Não definida</td>
-                <td>Pequeno</td>
-                <td><a href="editar-pet.html">Editar</a> | <a href="visualizar-pet.html">Visualizar</a></td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
-    </main>
+    <section class="filtros">
+
+        <label for="pesquisa">
+            Pesquisar Pet
+        </label>
+
+        <input
+            type="search"
+            id="pesquisa"
+            placeholder="Nome do Pet">
+
+        <label for="tipo">
+            Tipo
+        </label>
+
+        <select id="tipo">
+            <option>Todos</option>
+            <option>Cachorro</option>
+            <option>Gato</option>
+        </select>
+
+    </section>
+
+
+    <section class="tabela-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Raça</th>
+                    <th>Tamanho</th>
+                    <th>Proprietário</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>
+                        <img
+                            class="foto-tabela-pet"
+                            src="../imagens/Cachorro-max.jpeg"
+                            alt="Max">
+                    </td>
+                    <td>Max</td>
+                    <td>Cachorro</td>
+                    <td>Golden Retriever</td>
+                    <td>Grande</td>
+                    <td>Ana Souza</td>
+                    <td>
+                        <a href="visualizar-pet.html">Visualizar</a>
+                        <br>
+                        <a href="editar-pet.html">Editar</a>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <img
+                            class="foto-tabela-pet"
+                            src="../imagens/cachorro-lulu.jpeg"
+                            alt="Lulu">
+                    </td>
+                    <td>Lulu</td>
+                    <td>Cachorro</td>
+                    <td>Poodle</td>
+                    <td>Pequeno</td>
+                    <td>Bruno Silva</td>
+                    <td>
+                        <a href="visualizar-pet.html">Visualizar</a>
+                        <br>
+                        <a href="editar-pet.html">Editar</a>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <img
+                            class="foto-tabela-pet"
+                            src="../imagens/cachorro-zico.jpeg"
+                            alt="Zico">
+                    </td>
+                    <td>Zico</td>
+                    <td>Cachorro</td>
+                    <td>Rottweiler</td>
+                    <td>Grande</td>
+                    <td>Carla Oliveira</td>
+                    <td>
+                        <a href="visualizar-pet.html">Visualizar</a>
+                        <br>
+                        <a href="editar-pet.html">Editar</a>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <img
+                            class="foto-tabela-pet"
+                            src="../imagens/cachorro-nina.jpeg"
+                            alt="Nina">
+                    </td>
+                    <td>Nina</td>
+                    <td>Cachorro</td>
+                    <td>Labrador</td>
+                    <td>Médio</td>
+                    <td>Daniel Santos</td>
+                    <td>
+                        <a href="visualizar-pet.html">Visualizar</a>
+                        <br>
+                        <a href="editar-pet.html">Editar</a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</main>
+
 </body>
 </html>

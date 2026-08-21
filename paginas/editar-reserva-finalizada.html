@@ -1,73 +1,185 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reservas / editar reserva finalizada - Hotel Pet</title>
-    <link rel="stylesheet" href="..style.css">
-
+    <title>Hotel Pet - Editar Reserva Finalizada</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
-    <header>
-        <div class="logo"><a href="reservas.html">Hotel Pet</a></div>
-        <div class="usuario-topo">
-            <span>◯</span>
-            <a href="perfil.html">João da Silva</a>
+
+<header class="topo">
+
+    <div class="logo">Hotel Pet</div>
+
+    <nav>
+        <a href="pets.html">Pets</a>
+        <a href="reservas.html" class="ativo">Reservas</a>
+        <a href="usuarios.html">Usuários</a>
+        <a href="configuracoes.html">Configurações</a>
+    </nav>
+
+    <div class="usuario-topo">
+        <span>Gerente</span>
+        <a href="perfil.html">Perfil</a>
+        <a href="../index.html">Sair</a>
+    </div>
+
+</header>
+
+
+<main class="conteudo">
+
+    <section class="formulario-centralizado">
+
+        <div class="aviso-gerente">
+
+            <strong>
+                Acesso do Gerente
+            </strong>
+
+            <p>
+                O gerente pode alterar informações de
+                reservas finalizadas.
+            </p>
+
         </div>
-    </header>
 
-    <aside>
-        <nav aria-label="Menu principal">
-            <ul>
-                <li class=""><a href="pets.html">Pets</a></li>
-                <li class=""><a href="usuarios.html">Usuários</a></li>
-                <li class=""><a href="configuracoes.html">Configurações</a></li>
-                <li class="active"><a href="reservas.html">Reservas</a></li>
-            </ul>
-        </nav>
-    </aside>
 
-    <main>
-        <div class="breadcrumb">Home / reservas / editar reserva finalizada</div>
-        
-<section class="conteudo">
-    <h1>Editar reserva</h1>
-    <form action="reservas.html">
-        <label for="prop">Proprietário *</label>
-        <input id="prop" type="text" value="João da Silva">
+        <h1>
+            Editar Reserva Finalizada
+        </h1>
 
-        <label for="pet">Pet *</label>
-        <input id="pet" type="text" value="Max">
+        <p>
+            Reserva de Nina - Daniel Santos.
+        </p>
 
-        <label>Período *</label>
-        <input type="date" value="2021-05-02">
-        <input type="date" value="2021-05-07">
 
-        <label for="notas">Notas</label>
-        <textarea id="notas" rows="3">Lorem ipsum dolor sit amet, consectetur et adipisicing elit.</textarea>
+        <form action="visualizar-reserva.html">
 
-        <label for="status">Status *</label>
-        <select id="status">
-            <option>Finalizada</option>
-        </select>
+            <label for="pet">
+                Pet
+            </label>
 
-        <p>Total das diárias: <strong>R$ 40,00</strong></p>
+            <select id="pet">
 
-        <fieldset>
-            <legend>Recibo</legend>
-            <input type="file" accept=".pdf,image/*">
-        </fieldset>
+                <option selected>
+                    Nina - Daniel Santos
+                </option>
 
-        <fieldset>
-            <legend>Nota</legend>
-            <input type="file" accept=".pdf,image/*">
-        </fieldset>
+            </select>
 
-        <button type="submit">Salvar</button>
-        <button type="reset">Limpar</button>
-    </form>
-</section>
 
-    </main>
+            <label for="entrada">
+                Data de entrada
+            </label>
+
+            <input
+                type="date"
+                id="entrada"
+                value="2026-09-10"
+            >
+
+
+            <label for="saida">
+                Data de saída
+            </label>
+
+            <input
+                type="date"
+                id="saida"
+                value="2026-09-13"
+            >
+
+
+            <label for="status">
+                Status
+            </label>
+
+            <select id="status">
+
+                <option>
+                    Reservada
+                </option>
+
+                <option>
+                    Hospedado
+                </option>
+
+                <option selected>
+                    Finalizada
+                </option>
+
+            </select>
+
+
+            <label for="anotacoes">
+                Anotações da estadia
+            </label>
+
+            <textarea id="anotacoes"
+                    rows="5">Nina permaneceu tranquila durante toda a hospedagem.
+            </textarea>
+
+
+            <label for="recibo">
+                Recibo / Nota da estadia
+            </label>
+
+            <textarea id="recibo"
+                    rows="4">Hospedagem: 3 diárias
+Valor: R$ 150,00
+Pagamento: realizado.
+            </textarea>
+
+
+            <div class="valor-reserva">
+
+                <span>
+                    Valor da diária:
+                </span>
+
+                <strong>
+                    R$ 50,00
+                </strong>
+
+            </div>
+
+
+            <div class="valor-reserva">
+
+                <span>
+                    Total:
+                </span>
+
+                <strong>
+                    R$ 150,00
+                </strong>
+
+            </div>
+
+
+            <div class="botoes-formulario">
+
+                <a href="reservas.html"
+                    class="botao-secundario">
+                    Cancelar
+                </a>
+
+                <button type="submit"
+                        class="botao">
+                    Salvar alterações
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
 </body>
 </html>

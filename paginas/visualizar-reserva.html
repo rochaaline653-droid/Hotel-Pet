@@ -1,57 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reservas / ver reserva - Hotel Pet</title>
-    <link rel="stylesheet" href="..style.css">
+    <title>Hotel Pet - Visualizar Reserva</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-    <header>
-        <div class="logo"><a href="reservas.html">Hotel Pet</a></div>
-        <div class="usuario-topo">
-            <span>◯</span>
-            <a href="perfil.html">João da Silva</a>
+
+<header class="topo">
+
+    <div class="logo">Hotel Pet</div>
+
+    <nav>
+        <a href="pets.html">Pets</a>
+        <a href="reservas.html" class="ativo">Reservas</a>
+        <a href="usuarios.html">Usuários</a>
+        <a href="configuracoes.html">Configurações</a>
+    </nav>
+
+    <div class="usuario-topo">
+        <span>Gerente</span>
+        <a href="perfil.html">Perfil</a>
+        <a href="../index.html">Sair</a>
+    </div>
+
+</header>
+
+
+<main class="conteudo">
+
+    <section class="detalhes-reserva">
+
+        <div class="cabecalho-detalhes">
+
+            <div>
+
+                <h1>
+                    Reserva - Max
+                </h1>
+
+                <p>
+                    Reserva nº 001
+                </p>
+
+            </div>
+
+            <span class="status reservado">
+                Reservada
+            </span>
+
         </div>
-    </header>
 
-    <aside>
-        <nav aria-label="Menu principal">
-            <ul>
-                <li class=""><a href="pets.html">Pets</a></li>
-                <li class=""><a href="usuarios.html">Usuários</a></li>
-                <li class=""><a href="configuracoes.html">Configurações</a></li>
-                <li class="active"><a href="reservas.html">Reservas</a></li>
-            </ul>
-        </nav>
-    </aside>
 
-    <main>
-        <div class="breadcrumb">Home / reservas / ver reserva</div>
-        
-<section class="conteudo">
-    <h1>Ver reserva</h1>
-    <dl>
-        <dt>Id</dt><dd>12349984501</dd>
-        <dt>Proprietário</dt><dd>João da Silva</dd>
-        <dt>Pet</dt><dd>Max</dd>
-        <dt>Chegada</dt><dd>02/06/2021</dd>
-        <dt>Partida</dt><dd>07/05/2020</dd>
-        <dt>Notas</dt><dd>Lorem ipsum...</dd>
-        <dt>Anotações dos funcionários</dt><dd>Lorem ipsum...</dd>
-        <dt>Status</dt><dd>Finalizada</dd>
-        <dt>Total das diárias</dt><dd>R$ 40,00</dd>
-        <dt>Recibo</dt><dd>Recibo disponível</dd>
-        <dt>Criado em</dt><dd>02/06/2021</dd>
-        <dt>Atualizado em</dt><dd>07/05/2021</dd>
-    </dl>
-    <p>Imagens</p>
-    <img src="../img/imagem-reserva-1.svg" alt="Imagem da reserva">
-    <img src="../img/imagem-reserva-2.svg" alt="Imagem da reserva">
-    <p><a href="reservas.html">Voltar</a></p>
-</section>
+        <div class="dados-reserva">
 
-    </main>
+            <div>
+                <strong>Pet</strong>
+                <span>Max</span>
+            </div>
+
+            <div>
+                <strong>Proprietário</strong>
+                <span>Ana Souza</span>
+            </div>
+
+            <div>
+                <strong>Entrada</strong>
+                <span>25/08/2026</span>
+            </div>
+
+            <div>
+                <strong>Saída</strong>
+                <span>28/08/2026</span>
+            </div>
+
+            <div>
+                <strong>Diárias</strong>
+                <span>3</span>
+            </div>
+
+            <div>
+                <strong>Valor</strong>
+                <span>R$ 150,00</span>
+            </div>
+
+        </div>
+
+
+        <div class="observacoes">
+
+            <h2>
+                Informações sobre o Pet
+            </h2>
+
+            <p>
+                Max deve receber sua alimentação normalmente
+                durante a hospedagem.
+            </p>
+
+        </div>
+
+
+        <div class="botoes-formulario">
+
+            <a href="editar-reserva.html"
+                class="botao">
+                Editar Reserva
+            </a>
+
+            <a href="reservas.html"
+                class="botao-secundario">
+                Voltar
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
 </body>
 </html>

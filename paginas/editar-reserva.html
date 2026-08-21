@@ -1,72 +1,184 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reservas / editar reserva - Hotel Pet</title>
+    <title>Hotel Pet - Editar Reserva</title>
     <link rel="stylesheet" href="../style.css">
-    
 </head>
+
 <body>
-    <header>
-        <div class="logo"><a href="reservas.html">Hotel Pet</a></div>
-        <div class="usuario-topo">
-            <span>◯</span>
-            <a href="perfil.html">João da Silva</a>
-        </div>
-    </header>
 
-    <aside>
-        <nav aria-label="Menu principal">
-            <ul>
-                <li class=""><a href="pets.html">Pets</a></li>
-                <li class=""><a href="usuarios.html">Usuários</a></li>
-                <li class=""><a href="configuracoes.html">Configurações</a></li>
-                <li class="active"><a href="reservas.html">Reservas</a></li>
-            </ul>
-        </nav>
-    </aside>
+<header class="topo">
 
-    <main>
-        <div class="breadcrumb">Home / reservas / editar reserva</div>
-        
-<section class="conteudo">
-    <h1>Editar reserva</h1>
-    <form action="reservas.html">
-        <label for="prop">Proprietário *</label>
-        <input id="prop" type="text" value="João da Silva">
+    <div class="logo">Hotel Pet</div>
 
-        <label for="pet">Pet *</label>
-        <input id="pet" type="text" value="Max">
+    <nav>
+        <a href="pets.html">Pets</a>
+        <a href="reservas.html" class="ativo">Reservas</a>
+        <a href="usuarios.html">Usuários</a>
+        <a href="configuracoes.html">Configurações</a>
+    </nav>
 
-        <label>Período *</label>
-        <input type="date" value="2021-05-02">
-        <input type="date" value="2021-05-07">
+    <div class="usuario-topo">
+        <span>Gerente</span>
+        <a href="perfil.html">Perfil</a>
+        <a href="../index.html">Sair</a>
+    </div>
 
-        <label for="notas">Notas</label>
-        <textarea id="notas" rows="4">Lorem ipsum dolor sit amet, consectetur et adipisicing elit.</textarea>
+</header>
 
-        <label for="status">Status *</label>
-        <select id="status">
-            <option>Em andamento</option>
-            <option>Reservada</option>
-            <option>Finalizada</option>
-        </select>
 
-        <label for="anotacoes">Anotações do funcionário</label>
-        <textarea id="anotacoes" rows="4">Lorem ipsum dolor sit amet, consectetur et adipisicing elit.</textarea>
+<main class="conteudo">
 
-        <div>
-            <span>Imagem</span>
-            <input type="file" accept="image/*">
-        </div>
+    <section class="formulario-centralizado">
 
-        <p>Total das diárias: <strong>R$ 40,00</strong></p>
-        <button type="submit">Salvar</button>
-        <button type="reset">Limpar</button>
-    </form>
-</section>
+        <h1>
+            Editar Reserva
+        </h1>
 
-    </main>
+        <p>
+            Altere os dados da reserva.
+        </p>
+
+
+        <form action="visualizar-reserva.html">
+
+            <label for="pet">
+                Pet
+            </label>
+
+            <select id="pet">
+
+                <option selected>
+                    Max - Ana Souza
+                </option>
+
+                <option>
+                    Lulu - Bruno Silva
+                </option>
+
+                <option>
+                    Zico - Carla Oliveira
+                </option>
+
+                <option>
+                    Nina - Daniel Santos
+                </option>
+
+            </select>
+
+
+            <label for="entrada">
+                Data de entrada
+            </label>
+
+            <input
+                type="date"
+                id="entrada"
+                value="2026-08-25"
+            >
+
+
+            <label for="saida">
+                Data de saída
+            </label>
+
+            <input
+                type="date"
+                id="saida"
+                value="2026-08-28"
+            >
+
+
+            <label for="status">
+                Status da reserva
+            </label>
+
+            <select id="status">
+
+                <option selected>
+                    Reservada
+                </option>
+
+                <option>
+                    Hospedado
+                </option>
+
+                <option>
+                    Finalizada
+                </option>
+
+            </select>
+
+
+            <label for="anotacoes">
+                Anotações
+            </label>
+
+            <textarea
+                id="anotacoes"
+                rows="5">
+Max está se adaptando bem ao ambiente.
+            </textarea>
+
+
+            <label for="imagem">
+                Link da imagem
+            </label>
+
+            <input
+                type="url"
+                id="imagem"
+                placeholder="/imagens/cachorro-max.jpeg">
+
+            
+            <div class="valor-reserva">
+
+                <span>
+                    Valor da diária:
+                </span>
+
+                <strong>
+                    R$ 50,00
+                </strong>
+
+            </div>
+
+
+            <div class="valor-reserva">
+
+                <span>
+                    Total:
+                </span>
+
+                <strong>
+                    R$ 150,00
+                </strong>
+
+            </div>
+
+
+            <div class="botoes-formulario">
+
+                <a href="reservas.html"
+                    class="botao-secundario">
+                    Cancelar
+                </a>
+
+                <button type="submit"
+                        class="botao">
+                    Salvar alterações
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
 </body>
 </html>

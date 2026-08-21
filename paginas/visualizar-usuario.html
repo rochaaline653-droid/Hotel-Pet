@@ -1,46 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuário / Visualizar - Hotel Pet</title>
+    <title>Hotel Pet - Visualizar Usuário</title>
     <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
-    <header>
-        <div class="logo"><a href="reservas.html">Hotel Pet</a></div>
-        <div class="usuario-topo">
-            <span>◯</span>
-            <a href="perfil.html">João da Silva</a>
+
+<header class="topo">
+
+    <div class="logo">Hotel Pet</div>
+
+    <nav>
+        <a href="pets.html">Pets</a>
+        <a href="reservas.html">Reservas</a>
+        <a href="usuarios.html" class="ativo">Usuários</a>
+        <a href="configuracoes.html">Configurações</a>
+    </nav>
+
+    <div class="usuario-topo">
+        <span>Gerente</span>
+        <a href="perfil.html">Perfil</a>
+        <a href="../index.html">Sair</a>
+    </div>
+
+</header>
+
+
+<main class="conteudo">
+
+    <section class="visualizar-usuario">
+
+        <div class="avatar-usuario">
+            AR
         </div>
-    </header>
 
-    <aside>
-        <nav aria-label="Menu principal">
-            <ul>
-                <li class=""><a href="pets.html">Pets</a></li>
-                <li class="active"><a href="usuarios.html">Usuários</a></li>
-                <li class=""><a href="configuracoes.html">Configurações</a></li>
-                <li class=""><a href="reservas.html">Reservas</a></li>
-            </ul>
-        </nav>
-    </aside>
+        <div class="informacoes-usuario">
 
-    <main>
-        <div class="breadcrumb">Home / Usuário / Visualizar</div>
-        
-<section class="conteudo">
-    <h1>Visualizar usuário</h1>
-    <dl>
-        <dt>Email</dt><dd>joaosilva@pet.com</dd>
-        <dt>Nome</dt><dd>João da Silva</dd>
-        <dt>Função</dt><dd>Gerente</dd>
-        <dt>Status</dt><dd>Ativo</dd>
-        <dt>Criado em</dt><dd>19/02/2020</dd>
-    </dl>
-    <p><a href="usuarios.html">Voltar</a></p>
-</section>
+            <h1>
+                Ana Souza
+            </h1>
 
-    </main>
+            <p>
+                <strong>E-mail:</strong>
+                ana@email.com
+            </p>
+
+            <p>
+                <strong>Telefone:</strong>
+                (77) 99999-1111
+            </p>
+
+            <p>
+                <strong>Função:</strong>
+                Cliente
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                Ativo
+            </p>
+
+            <div class="botoes-formulario">
+
+                <a href="editar-usuario.html"
+                    class="botao">
+                    Editar Usuário
+                </a>
+
+                <a href="usuarios.html"
+                    class="botao-secundario">
+                    Voltar
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
 </body>
 </html>
