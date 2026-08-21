@@ -1,29 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Hotel Pet</title>
+    <title>Hotel Pet - Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <main>
-        <section>
+
+    <main class="login-container">
+
+        <section class="login-apresentacao">
+
+            <img src="../imagens/cachorro-login.jpeg"
+                alt="Cachorros do Hotel Pet">
+
             <h1>Hotel Pet</h1>
-            <h2>Login</h2>
-            <form action="paginas/reservas.html">
-                <label for="login">Login</label>
-                <input id="login" type="text" name="login" placeholder="Login">
+
+            <p>
+                Todo o carinho que ele merece, com a tranquilidade que você precisa.
+            </p>
+
+        </section>
+
+
+        <section class="login-formulario">
+
+            <h2>Hotel Pet</h2>
+
+            <h3>Login</h3>
+
+            <form action="paginas/pets.html">
+
+                <label for="email">E-mail</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                >
 
                 <label for="senha">Senha</label>
-                <input id="senha" type="password" name="senha" placeholder="Senha">
 
-                <label><input type="checkbox" name="lembrar"> Lembrar-me</label>
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
 
-                <button type="submit">Entrar</button>
+                <button type="submit">
+                    Entrar
+                </button>
+
             </form>
-            <a href="paginas/criar-conta.html">Criar uma conta</a>
+
+            <p class="link-conta">
+                Ainda não possui uma conta?
+                <a href="paginas/criar-conta.html">
+                    Criar conta
+                </a>
+            </p>
+
         </section>
+
     </main>
+
 </body>
+
 </html>
