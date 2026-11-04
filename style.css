@@ -889,3 +889,19 @@ td a {
     }
 
 }
+
+
+.botao-excluir-tabela {
+    padding: 8px 12px;
+    margin: 4px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    background-color: #dc3545;
+    color: white;
+}
+
+.botao-excluir-tabela:hover {
+    background-color: #b52a37;
+}
