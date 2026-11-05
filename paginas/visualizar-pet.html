@@ -11,7 +11,6 @@
 <body>
 
 <header class="topo">
-
     <div class="logo">Hotel Pet</div>
 
     <nav>
@@ -26,56 +25,35 @@
         <a href="perfil.html">Perfil</a>
         <a href="../index.html">Sair</a>
     </div>
-
 </header>
-
 
 <main class="conteudo">
 
     <section class="visualizar-pet">
 
         <div class="foto-visualizar-pet">
-
-            <img
-                src="../imagens/cachorro-max.jpeg"
-                alt="Max">
-
+            <img id="fotoPet" src="../imagens/cachorro-max.jpeg" alt="Foto do pet">
         </div>
-
 
         <div class="informacoes-pet">
 
-            <h1>Max</h1>
+            <h1 id="nomePet">Nome do Pet</h1>
 
-            <p>
-                <strong>Tipo:</strong>
-                Cachorro
-            </p>
+            <p><strong>Tipo:</strong> <span id="tipoPet"></span></p>
 
-            <p>
-                <strong>Raça:</strong>
-                Golden Retriever
-            </p>
+            <p><strong>Raça:</strong> <span id="racaPet"></span></p>
 
-            <p>
-                <strong>Tamanho:</strong>
-                Grande
-            </p>
+            <p><strong>Tamanho:</strong> <span id="tamanhoPet"></span></p>
 
-            <p>
-                <strong>Proprietário:</strong>
-                Ana Souza
-            </p>
+            <p><strong>Proprietário:</strong> <span id="proprietarioPet"></span></p>
 
             <div class="botoes-formulario">
 
-                <a href="editar-pet.html"
-                    class="botao">
+                <a href="#" id="botaoEditar" class="botao">
                     Editar Pet
                 </a>
 
-                <a href="pets.html"
-                    class="botao-secundario">
+                <a href="pets.html" class="botao-secundario">
                     Voltar
                 </a>
 
@@ -85,13 +63,11 @@
 
     </section>
 
-
     <section class="tabela-container">
 
         <h2>Histórico de Reservas</h2>
 
         <table>
-
             <thead>
                 <tr>
                     <th>Entrada</th>
@@ -102,23 +78,16 @@
                 </tr>
             </thead>
 
-            <tbody>
-
-                <tr>
-                    <td>25/08/2026</td>
-                    <td>28/08/2026</td>
-                    <td>3</td>
-                    <td>R$ 150,00</td>
-                    <td>Reservada</td>
-                </tr>
-
+            <tbody id="historicoReservas">
             </tbody>
-
         </table>
 
     </section>
 
 </main>
+
 <script src="../js/navegacao.js"></script>
+<script src="../js/visualizar-pet.js"></script>
+
 </body>
 </html>
