@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -29,7 +30,6 @@
 
 </header>
 
-
 <main class="conteudo">
 
     <section class="detalhes-reserva">
@@ -37,82 +37,67 @@
         <div class="cabecalho-detalhes">
 
             <div>
-
-                <h1>
-                    Reserva - Max
-                </h1>
-
-                <p>
-                    Reserva nº 001
-                </p>
-
+                <h1 id="tituloReserva">Reserva</h1>
+                <p id="numeroReserva">Reserva nº</p>
             </div>
 
-            <span class="status reservado">
+            <span id="statusReserva" class="status reservado">
                 Reservada
             </span>
 
         </div>
 
-
         <div class="dados-reserva">
 
             <div>
                 <strong>Pet</strong>
-                <span>Max</span>
+                <span id="petReserva"></span>
             </div>
 
             <div>
                 <strong>Proprietário</strong>
-                <span>Ana Souza</span>
+                <span id="proprietarioReserva"></span>
             </div>
 
             <div>
                 <strong>Entrada</strong>
-                <span>25/08/2026</span>
+                <span id="entradaReserva"></span>
             </div>
 
             <div>
                 <strong>Saída</strong>
-                <span>28/08/2026</span>
+                <span id="saidaReserva"></span>
             </div>
 
             <div>
                 <strong>Diárias</strong>
-                <span>3</span>
+                <span id="diariasReserva"></span>
             </div>
 
             <div>
                 <strong>Valor</strong>
-                <span>R$ 150,00</span>
+                <span id="valorReserva"></span>
             </div>
 
         </div>
 
-
         <div class="observacoes">
 
-            <h2>
-                Informações sobre o Pet
-            </h2>
+            <h2>Informações sobre o Pet</h2>
 
-            <p>
-                Max deve receber sua alimentação normalmente
-                durante a hospedagem.
+            <p id="anotacoesReserva">
+                Nenhuma informação cadastrada.
             </p>
 
         </div>
 
-
         <div class="botoes-formulario">
 
-            <a href="editar-reserva.html"
-                class="botao">
+            <a href="#" id="botaoEditarReserva" class="botao">
                 Editar Reserva
             </a>
 
-            <a href="reservas.html"
-                class="botao-secundario">
+            <a href="reservas.html" class="botao-secundario">
                 Voltar
             </a>
 
@@ -121,6 +106,10 @@
     </section>
 
 </main>
+
 <script src="../js/navegacao.js"></script>
+<script src="../js/visualizar-reserva.js"></script>
+
 </body>
 </html>
+

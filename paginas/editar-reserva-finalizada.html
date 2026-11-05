@@ -29,147 +29,64 @@
 
 </header>
 
-
 <main class="conteudo">
 
     <section class="formulario-centralizado">
 
         <div class="aviso-gerente">
-
-            <strong>
-                Acesso do Gerente
-            </strong>
+            <strong>Acesso do Gerente</strong>
 
             <p>
                 O gerente pode alterar informações de
                 reservas finalizadas.
             </p>
-
         </div>
 
+        <h1>Editar Reserva Finalizada</h1>
 
-        <h1>
-            Editar Reserva Finalizada
-        </h1>
+        <p id="descricaoReserva">Carregando reserva...</p>
 
-        <p>
-            Reserva de Nina - Daniel Santos.
-        </p>
+        <form>
 
+            <label for="pet">Pet</label>
+            <select id="pet" required></select>
 
-        <form action="visualizar-reserva.html">
+            <label for="entrada">Data de entrada</label>
+            <input type="date" id="entrada" required>
 
-            <label for="pet">
-                Pet
-            </label>
+            <label for="saida">Data de saída</label>
+            <input type="date" id="saida" required>
 
-            <select id="pet">
-
-                <option selected>
-                    Nina - Daniel Santos
-                </option>
-
-            </select>
-
-
-            <label for="entrada">
-                Data de entrada
-            </label>
-
-            <input
-                type="date"
-                id="entrada"
-                value="2026-09-10"
-            >
-
-
-            <label for="saida">
-                Data de saída
-            </label>
-
-            <input
-                type="date"
-                id="saida"
-                value="2026-09-13"
-            >
-
-
-            <label for="status">
-                Status
-            </label>
-
+            <label for="status">Status</label>
             <select id="status">
-
-                <option>
-                    Reservada
-                </option>
-
-                <option>
-                    Hospedado
-                </option>
-
-                <option selected>
-                    Finalizada
-                </option>
-
+                <option>Reservada</option>
+                <option>Hospedado</option>
+                <option>Finalizada</option>
             </select>
 
+            <label for="anotacoes">Anotações da estadia</label>
+            <textarea id="anotacoes" rows="5"></textarea>
 
-            <label for="anotacoes">
-                Anotações da estadia
-            </label>
-
-            <textarea id="anotacoes"
-                    rows="5">Nina permaneceu tranquila durante toda a hospedagem.
-            </textarea>
-
-
-            <label for="recibo">
-                Recibo / Nota da estadia
-            </label>
-
-            <textarea id="recibo"
-                    rows="4">Hospedagem: 3 diárias
-Valor: R$ 150,00
-Pagamento: realizado.
-            </textarea>
-
+            <label for="recibo">Recibo / Nota da estadia</label>
+            <textarea id="recibo" rows="4"></textarea>
 
             <div class="valor-reserva">
-
-                <span>
-                    Valor da diária:
-                </span>
-
-                <strong>
-                    R$ 50,00
-                </strong>
-
+                <span>Valor da diária:</span>
+                <strong id="valorDiaria">R$ 50,00</strong>
             </div>
-
 
             <div class="valor-reserva">
-
-                <span>
-                    Total:
-                </span>
-
-                <strong>
-                    R$ 150,00
-                </strong>
-
+                <span>Total:</span>
+                <strong id="valorTotal">R$ 0,00</strong>
             </div>
-
 
             <div class="botoes-formulario">
 
-                <a href="reservas.html"
-                    class="botao-secundario">
+                <a href="reservas.html" class="botao-secundario">
                     Cancelar
                 </a>
 
-                <button type="submit"
-                        class="botao">
+                <button type="submit" class="botao">
                     Salvar alterações
                 </button>
 
@@ -180,6 +97,9 @@ Pagamento: realizado.
     </section>
 
 </main>
+
 <script src="../js/navegacao.js"></script>
+<script src="../js/reservas.js"></script>
+
 </body>
 </html>

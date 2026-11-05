@@ -5,17 +5,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const valorDiaria = 50;
 
     function dataParaISO(data) {
+        if (!data || !data.includes("/")) return data;
+
         const partes = data.split("/");
         return `${partes[2]}-${partes[1]}-${partes[0]}`;
     }
 
     function dataParaBR(data) {
         if (!data) return "";
+
         const [ano, mes, dia] = data.split("-");
         return `${dia}/${mes}/${ano}`;
     }
 
     function calcularDiarias(entrada, saida) {
+        if (!entrada || !saida) return 0;
+
         const inicio = new Date(entrada + "T00:00:00");
         const fim = new Date(saida + "T00:00:00");
 
@@ -25,7 +30,16 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
+    function formatarMoeda(valor) {
+        return valor.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
+    }
+
+    // Carrega as reservas
     function carregarReservas() {
+
         const dados = localStorage.getItem(chave);
 
         if (dados) {
@@ -37,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         return Array.from(linhas).map(function (linha) {
+
             const celulas = linha.querySelectorAll("td");
 
             return {
@@ -46,18 +61,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 saida: dataParaISO(celulas[3].textContent.trim()),
                 status: celulas[6].textContent.trim(),
                 anotacoes: "",
-                imagem: ""
+                imagem: "",
+                recibo: ""
             };
         });
     }
 
-    function salvarReservas(reservas) {
-        localStorage.setItem(chave, JSON.stringify(reservas));
+    // Salva as reservas
+    function salvarReservas(lista) {
+        localStorage.setItem(chave, JSON.stringify(lista));
     }
 
     let reservas = carregarReservas();
 
+    // Exibe as reservas na tabela
     function mostrarReservas() {
+
         const corpo = document.querySelector(
             ".tabela-container tbody"
         );
@@ -67,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         corpo.innerHTML = "";
 
         reservas.forEach(function (reserva, indice) {
+
             const linha = document.createElement("tr");
 
             const diarias = calcularDiarias(
@@ -82,10 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dataParaBR(reserva.entrada),
                 dataParaBR(reserva.saida),
                 diarias,
-                total.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL"
-                })
+                formatarMoeda(total)
             ];
 
             valores.forEach(function (valor) {
@@ -118,9 +135,11 @@ document.addEventListener("DOMContentLoaded", function () {
             visualizar.textContent = "Visualizar";
 
             const editar = document.createElement("a");
+
             editar.href = reserva.status === "Finalizada"
                 ? "editar-reserva-finalizada.html?id=" + indice
                 : "editar-reserva.html?id=" + indice;
+
             editar.textContent = "Editar";
 
             const excluir = document.createElement("button");
@@ -139,19 +158,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Preencher e salvar o formulário de edição
+    // Formulário de edição
     const formulario = document.querySelector(
         ".formulario-centralizado form"
     );
 
     if (formulario) {
+
         const parametros = new URLSearchParams(
             window.location.search
         );
 
         const indice = Number(parametros.get("id"));
 
-        if (!parametros.has("id") || !reservas[indice]) {
+        if (
+            !parametros.has("id") ||
+            !Number.isInteger(indice) ||
+            indice < 0 ||
+            !reservas[indice]
+        ) {
             alert("Reserva não encontrada.");
             window.location.href = "reservas.html";
             return;
@@ -159,25 +184,119 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const reserva = reservas[indice];
 
-        document.getElementById("pet").value =
-            reserva.pet + " - " + reserva.proprietario;
+        const campoPet = document.getElementById("pet");
+        const campoEntrada = document.getElementById("entrada");
+        const campoSaida = document.getElementById("saida");
+        const campoStatus = document.getElementById("status");
+        const campoAnotacoes = document.getElementById("anotacoes");
+        const campoRecibo = document.getElementById("recibo");
+        const campoImagem = document.getElementById("imagem");
 
-        document.getElementById("entrada").value = reserva.entrada;
-        document.getElementById("saida").value = reserva.saida;
-        document.getElementById("status").value = reserva.status;
-        document.getElementById("anotacoes").value =
-            reserva.anotacoes || "";
-        document.getElementById("imagem").value =
-            reserva.imagem || "";
+        // Carrega os pets cadastrados
+        const petsCadastrados = JSON.parse(
+            localStorage.getItem("hotelPetPets")
+        ) || [];
 
+        if (campoPet) {
+
+            campoPet.innerHTML = "";
+
+            // Adiciona os animais cadastrados
+            petsCadastrados.forEach(function (pet) {
+
+                const nomePet = pet.nome || "";
+                const proprietario = pet.proprietario || "";
+
+                const opcao = document.createElement("option");
+
+                opcao.value = nomePet + " - " + proprietario;
+                opcao.textContent = nomePet + " - " + proprietario;
+
+                campoPet.appendChild(opcao);
+            });
+
+            // Verifica se o pet da reserva está na lista
+            const valorReserva =
+                reserva.pet + " - " + reserva.proprietario;
+
+            const existeOpcao = Array.from(
+                campoPet.options
+            ).some(function (opcao) {
+                return opcao.value === valorReserva;
+            });
+
+            // Se não estiver na lista, adiciona o pet da reserva
+            if (!existeOpcao) {
+
+                const opcaoAtual = document.createElement("option");
+
+                opcaoAtual.value = valorReserva;
+                opcaoAtual.textContent = valorReserva;
+
+                campoPet.appendChild(opcaoAtual);
+            }
+
+            // Seleciona o animal da reserva
+            campoPet.value = valorReserva;
+        }
+
+        // Preenche os demais campos
+        campoEntrada.value = reserva.entrada || "";
+        campoSaida.value = reserva.saida || "";
+        campoStatus.value = reserva.status || "Reservada";
+        campoAnotacoes.value = reserva.anotacoes || "";
+
+        if (campoRecibo) {
+            campoRecibo.value = reserva.recibo || "";
+        }
+
+        if (campoImagem) {
+            campoImagem.value = reserva.imagem || "";
+        }
+
+        // Atualiza o valor total
+        function atualizarValor() {
+
+            const diarias = calcularDiarias(
+                campoEntrada.value,
+                campoSaida.value
+            );
+
+            const total = diarias * valorDiaria;
+
+            const elementoDiaria = document.getElementById("valorDiaria");
+            const elementoTotal = document.getElementById("valorTotal");
+
+            if (elementoDiaria) {
+                elementoDiaria.textContent = formatarMoeda(valorDiaria);
+            }
+
+            if (elementoTotal) {
+                elementoTotal.textContent = formatarMoeda(total);
+            }
+        }
+
+        campoEntrada.addEventListener("change", atualizarValor);
+        campoSaida.addEventListener("change", atualizarValor);
+
+        atualizarValor();
+
+        const descricao = document.getElementById("descricaoReserva");
+
+        if (descricao) {
+            descricao.textContent =
+                "Reserva de " + reserva.pet + " - " + reserva.proprietario;
+        }
+
+        // Salva as alterações
         formulario.addEventListener("submit", function (evento) {
+
             evento.preventDefault();
 
-            const petSelecionado =
-                document.getElementById("pet").value.split(" - ");
+            const petSelecionado = campoPet.value.split(" - ");
 
-            const entrada = document.getElementById("entrada").value;
-            const saida = document.getElementById("saida").value;
+            const entrada = campoEntrada.value;
+            const saida = campoSaida.value;
 
             if (!entrada || !saida || saida <= entrada) {
                 alert("A data de saída deve ser posterior à data de entrada.");
@@ -188,11 +307,16 @@ document.addEventListener("DOMContentLoaded", function () {
             reserva.proprietario = petSelecionado.slice(1).join(" - ");
             reserva.entrada = entrada;
             reserva.saida = saida;
-            reserva.status = document.getElementById("status").value;
-            reserva.anotacoes =
-                document.getElementById("anotacoes").value;
-            reserva.imagem =
-                document.getElementById("imagem").value;
+            reserva.status = campoStatus.value;
+            reserva.anotacoes = campoAnotacoes.value;
+
+            if (campoRecibo) {
+                reserva.recibo = campoRecibo.value;
+            }
+
+            if (campoImagem) {
+                reserva.imagem = campoImagem.value;
+            }
 
             reservas[indice] = reserva;
 
@@ -204,23 +328,27 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Excluir reservas
+    // Exclusão de reservas
     const corpo = document.querySelector(
         ".tabela-container tbody"
     );
 
     if (corpo) {
+
         corpo.addEventListener("click", function (evento) {
+
             if (
                 evento.target.classList.contains(
                     "botao-excluir-tabela"
                 )
             ) {
+
                 const indice = Number(
                     evento.target.dataset.indice
                 );
 
                 if (confirm("Deseja realmente excluir esta reserva?")) {
+
                     reservas.splice(indice, 1);
 
                     salvarReservas(reservas);

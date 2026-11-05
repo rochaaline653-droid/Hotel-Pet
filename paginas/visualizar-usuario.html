@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -29,50 +30,45 @@
 
 </header>
 
-
 <main class="conteudo">
 
     <section class="visualizar-usuario">
 
-        <div class="avatar-usuario">
-            AR
+        <div class="avatar-usuario" id="avatarUsuario">
+            US
         </div>
 
         <div class="informacoes-usuario">
 
-            <h1>
-                Ana Souza
-            </h1>
+            <h1 id="nomeUsuario">Nome do usuário</h1>
 
             <p>
                 <strong>E-mail:</strong>
-                ana@email.com
+                <span id="emailUsuario"></span>
             </p>
 
             <p>
                 <strong>Telefone:</strong>
-                (77) 99999-1111
+                <span id="telefoneUsuario"></span>
             </p>
 
             <p>
                 <strong>Função:</strong>
-                Cliente
+                <span id="funcaoUsuario"></span>
             </p>
 
             <p>
                 <strong>Status:</strong>
-                Ativo
+                <span id="statusUsuario"></span>
             </p>
 
             <div class="botoes-formulario">
 
-                <a href="editar-usuario.html"
-                    class="botao">
+                <a href="#" id="botaoEditarUsuario" class="botao">
                     Editar Usuário
                 </a>
 
-                <a href="usuarios.html"
-                    class="botao-secundario">
+                <a href="usuarios.html" class="botao-secundario">
                     Voltar
                 </a>
 
@@ -83,6 +79,9 @@
     </section>
 
 </main>
+
 <script src="../js/navegacao.js"></script>
+<script src="../js/visualizar-usuario.js"></script>
+
 </body>
 </html>
