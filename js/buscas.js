@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const campoPesquisa = document.querySelector("#pesquisa");
@@ -15,10 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    const linhas = Array.from(
-        tabela.querySelectorAll("tr")
-    );
-
     const caminho = window.location.pathname.toLowerCase();
 
     let tipoPagina = "geral";
@@ -32,15 +29,16 @@ document.addEventListener("DOMContentLoaded", function () {
         tipoPagina = "reservas";
     }
 
-    // Define quais colunas serão pesquisadas
+    // Define as colunas que serão pesquisadas
     const configuracoes = {
+
         pets: {
             colunas: [1, 2, 3, 4, 5],
             colunaFiltro: 2
         },
 
         usuarios: {
-            colunas: [0, 1],
+            colunas: [0, 1, 2],
             colunaFiltro: 3
         },
 
@@ -52,8 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const config = configuracoes[tipoPagina];
 
-    // Facilita a pesquisa ignorando maiúsculas e acentos
+    // Ignora letras maiúsculas e acentos
     function normalizar(texto) {
+
         return texto
             .toLocaleLowerCase("pt-BR")
             .normalize("NFD")
@@ -61,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .trim();
     }
 
-    // Cria a mensagem de resultados
+    // Cria mensagem de resultados
     const mensagem = document.createElement("p");
 
     mensagem.id = "mensagem-pesquisa";
@@ -73,13 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const filtros = document.querySelector(".filtros");
 
     if (filtros) {
-        filtros.insertAdjacentElement(
-            "afterend",
-            mensagem
-        );
+        filtros.insertAdjacentElement("afterend", mensagem);
     }
 
-    // Executa a pesquisa e aplica o filtro
+    // Executa a pesquisa
     function aplicarPesquisa() {
 
         const termo = normalizar(campoPesquisa.value);
@@ -87,6 +83,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const valorFiltro = filtroSelect
             ? normalizar(filtroSelect.value)
             : "todos";
+
+        // Busca as linhas atuais, inclusive as criadas pelo JavaScript
+        const linhas = Array.from(
+            tabela.querySelectorAll("tr")
+        );
 
         let quantidadeVisivel = 0;
 
@@ -97,29 +98,36 @@ document.addEventListener("DOMContentLoaded", function () {
             let textoPesquisa;
 
             if (config) {
+
                 textoPesquisa = config.colunas
                     .map(function (indice) {
+
                         return celulas[indice]
                             ? celulas[indice].textContent
                             : "";
+
                     })
                     .join(" ");
+
             } else {
+
                 textoPesquisa = linha.textContent;
+
             }
 
-            // Verifica se o texto pesquisado corresponde
+            // Verifica o texto digitado
             const correspondeTexto =
                 normalizar(textoPesquisa).includes(termo);
 
             let correspondeFiltro = true;
 
-            // Verifica a opção selecionada no filtro
+            // Verifica o filtro selecionado
             if (
                 config &&
                 filtroSelect &&
                 valorFiltro !== "todos"
             ) {
+
                 const celulaFiltro =
                     celulas[config.colunaFiltro];
 
@@ -127,47 +135,59 @@ document.addEventListener("DOMContentLoaded", function () {
                     ? normalizar(celulaFiltro.textContent)
                         .includes(valorFiltro)
                     : false;
+
             }
 
-            // Exibe ou oculta a linha da tabela
+            // Mostra ou oculta a linha
             const mostrar =
                 correspondeTexto && correspondeFiltro;
 
-            linha.hidden = !mostrar;
+            linha.style.display = mostrar ? "" : "none";
 
             if (mostrar) {
                 quantidadeVisivel++;
             }
+
         });
 
-        // Atualiza a mensagem de resultados
+        // Atualiza a mensagem
         if (quantidadeVisivel === 0) {
+
             mensagem.textContent =
                 "Nenhum resultado encontrado. Tente outra pesquisa.";
+
         } else if (quantidadeVisivel === 1) {
+
             mensagem.textContent =
                 "1 registro encontrado.";
+
         } else {
+
             mensagem.textContent =
                 quantidadeVisivel + " registros encontrados.";
+
         }
+
     }
 
-    // Pesquisa enquanto o usuário digita
+    // Pesquisa enquanto digita
     campoPesquisa.addEventListener(
         "input",
         aplicarPesquisa
     );
 
-    // Atualiza quando o filtro é alterado
+    // Atualiza quando o filtro muda
     if (filtroSelect) {
+
         filtroSelect.addEventListener(
             "change",
             aplicarPesquisa
         );
+
     }
 
-    // Exibe todos os registros inicialmente
+    // Pesquisa inicial
     aplicarPesquisa();
 
 });
+
