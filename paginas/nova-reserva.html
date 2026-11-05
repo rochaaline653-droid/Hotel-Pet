@@ -41,7 +41,7 @@
         </p>
 
 
-        <form action="reservas.html">
+        <form id="formNovaReserva">
 
             <label for="pet">
                 Pet
@@ -106,33 +106,15 @@
                 placeholder="Informe cuidados especiais, alimentação etc.">
             </textarea>
 
+<div class="valor-reserva">
+    <span>Valor da diária:</span>
+    <strong id="valorDiaria">R$ 50,00</strong>
+</div>
 
-            <div class="valor-reserva">
-
-                <span>
-                    Valor da diária:
-                </span>
-
-                <strong>
-                    R$ 50,00
-                </strong>
-
-            </div>
-
-
-            <div class="valor-reserva">
-
-                <span>
-                    Total estimado:
-                </span>
-
-                <strong>
-                    R$ 150,00
-                </strong>
-
-            </div>
-
-
+<div class="valor-reserva">
+    <span>Total estimado:</span>
+    <strong id="valorTotal">R$ 0,00</strong>
+</div>
             <div class="botoes-formulario">
 
                 <a href="reservas.html"
@@ -153,5 +135,6 @@
 
 </main>
 <script src="../js/navegacao.js"></script>
+<script src="../js/reservas.js"></script>
 </body>
 </html>

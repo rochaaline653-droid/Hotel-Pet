@@ -8,7 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const dados = localStorage.getItem(chave);
 
         if (dados) {
-            return JSON.parse(dados);
+            try {
+                return JSON.parse(dados);
+            } catch (erro) {
+                console.error("Erro ao carregar os pets:", erro);
+            }
         }
 
         // Carrega os pets da tabela na primeira utilização
@@ -22,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const imagem = celulas[0].querySelector("img");
 
             return {
-                foto: imagem.getAttribute("src"),
+                foto: imagem ? imagem.getAttribute("src") : "",
                 nome: celulas[1].textContent.trim(),
                 tipo: celulas[2].textContent.trim(),
                 raca: celulas[3].textContent.trim(),
@@ -31,7 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
             };
         });
 
-        localStorage.setItem(chave, JSON.stringify(lista));
+        // Só salva quando encontrou pets na tabela
+        if (lista.length > 0) {
+            localStorage.setItem(chave, JSON.stringify(lista));
+        }
 
         return lista;
     }
@@ -63,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const foto = document.createElement("img");
             foto.className = "foto-tabela-pet";
-            foto.src = pet.foto;
+            foto.src = pet.foto || "../imagens/cachorro-max.jpeg";
             foto.alt = pet.nome;
 
             celulaFoto.appendChild(foto);
@@ -111,12 +118,57 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Edição dos pets
-    const formulario = document.querySelector(
-        ".formulario-pet form"
+    // CADASTRO DE UM NOVO PET
+    const formularioCadastro = document.getElementById(
+        "formCadastroPet"
     );
 
-    if (formulario) {
+    if (formularioCadastro) {
+
+        formularioCadastro.addEventListener("submit", function (evento) {
+
+            evento.preventDefault();
+
+            const nome = document.getElementById("nome").value.trim();
+            const tipo = document.getElementById("tipo").value;
+            const raca = document.getElementById("raca").value.trim();
+            const tamanho = document.getElementById("tamanho").value;
+            const proprietario = document.getElementById("proprietario").value;
+            const foto = document.getElementById("foto").value.trim();
+
+            if (nome === "") {
+                alert("Informe o nome do pet.");
+                return;
+            }
+
+            const novoPet = {
+                nome: nome,
+                tipo: tipo,
+                raca: raca,
+                tamanho: tamanho,
+                proprietario: proprietario,
+                foto: foto || "../imagens/cachorro-max.jpeg"
+            };
+
+            // Adiciona o novo pet à lista
+            pets.push(novoPet);
+
+            // Salva no navegador
+            salvarPets(pets);
+
+            alert("Pet cadastrado com sucesso!");
+
+            // Retorna para a tabela de pets
+            window.location.href = "pets.html";
+        });
+    }
+
+    // EDIÇÃO DOS PETS
+    const formularioEdicao = document.querySelector(
+        ".formulario-pet form:not(#formCadastroPet)"
+    );
+
+    if (formularioEdicao) {
 
         const parametros = new URLSearchParams(
             window.location.search
@@ -136,7 +188,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Recupera somente o pet selecionado
         const pet = pets[indice];
 
         // Preenche os campos
@@ -170,13 +221,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Salva as alterações
-        formulario.addEventListener("submit", function (evento) {
+        formularioEdicao.addEventListener("submit", function (evento) {
 
             evento.preventDefault();
 
-            pet.nome = document.getElementById("nome").value;
+            pet.nome = document.getElementById("nome").value.trim();
             pet.tipo = document.getElementById("tipo").value;
-            pet.raca = document.getElementById("raca").value;
+            pet.raca = document.getElementById("raca").value.trim();
             pet.tamanho = document.getElementById("tamanho").value;
             pet.proprietario =
                 document.getElementById("proprietario").value;
@@ -197,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Exclusão dos pets
+    // EXCLUSÃO DOS PETS
     const corpo = document.querySelector(
         ".tabela-container tbody"
     );
@@ -233,3 +284,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+

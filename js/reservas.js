@@ -177,10 +177,124 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    
+    // CADASTRO DE NOVA RESERVA
+    const formularioNovaReserva = document.getElementById(
+        "formNovaReserva"
+    );
+
+    if (formularioNovaReserva) {
+
+        const campoPet = document.getElementById("pet");
+        const campoEntrada = document.getElementById("entrada");
+        const campoSaida = document.getElementById("saida");
+        const campoInformacoes = document.getElementById("informacoes");
+
+        // Carrega os pets já cadastrados
+        const petsCadastrados = JSON.parse(
+            localStorage.getItem("hotelPetPets")
+        ) || [];
+
+        if (petsCadastrados.length > 0) {
+
+            campoPet.innerHTML = "";
+
+            const primeiraOpcao = document.createElement("option");
+            primeiraOpcao.value = "";
+            primeiraOpcao.textContent = "Selecione o Pet";
+            campoPet.appendChild(primeiraOpcao);
+
+            petsCadastrados.forEach(function (pet) {
+
+                const opcao = document.createElement("option");
+
+                opcao.value = pet.nome + " - " + pet.proprietario;
+                opcao.textContent = pet.nome + " - " + pet.proprietario;
+
+                campoPet.appendChild(opcao);
+            });
+        }
+
+        // Busca o valor da diária nas Configurações
+        function atualizarValorNovaReserva() {
+
+            const diarias = calcularDiarias(
+                campoEntrada.value,
+                campoSaida.value
+            );
+
+            const diaria = obterValorDiaria();
+            const total = diarias * diaria;
+
+            const elementoDiaria = document.getElementById("valorDiaria");
+            const elementoTotal = document.getElementById("valorTotal");
+
+            if (elementoDiaria) {
+                elementoDiaria.textContent = formatarMoeda(diaria);
+            }
+
+            if (elementoTotal) {
+                elementoTotal.textContent = formatarMoeda(total);
+            }
+        }
+
+        campoEntrada.addEventListener(
+            "change",
+            atualizarValorNovaReserva
+        );
+
+        campoSaida.addEventListener(
+            "change",
+            atualizarValorNovaReserva
+        );
+
+        atualizarValorNovaReserva();
+
+        // Salva a nova reserva
+        formularioNovaReserva.addEventListener("submit", function (evento) {
+
+            evento.preventDefault();
+
+            if (!campoPet.value) {
+                alert("Selecione um pet para a reserva.");
+                return;
+            }
+
+            const entrada = campoEntrada.value;
+            const saida = campoSaida.value;
+
+            if (!entrada || !saida || saida <= entrada) {
+                alert("A data de saída deve ser posterior à data de entrada.");
+                return;
+            }
+
+            const petSelecionado = campoPet.value.split(" - ");
+
+            const novaReserva = {
+                pet: petSelecionado[0],
+                proprietario: petSelecionado.slice(1).join(" - "),
+                entrada: entrada,
+                saida: saida,
+                status: "Reservada",
+                anotacoes: campoInformacoes.value.trim(),
+                imagem: "",
+                recibo: ""
+            };
+
+            reservas.push(novaReserva);
+
+            salvarReservas(reservas);
+
+            alert("Reserva cadastrada com sucesso!");
+
+            window.location.href = "reservas.html";
+        });
+    }
+
     // Formulário de edição
     const formulario = document.querySelector(
-        ".formulario-centralizado form"
-    );
+    ".formulario-centralizado form:not(#formNovaReserva)"
+);
 
     if (formulario) {
 
