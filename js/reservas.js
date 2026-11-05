@@ -2,7 +2,24 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const chave = "hotelPetReservas";
-    const valorDiaria = 50;
+
+    // Busca o valor da diária salvo na página de Configurações
+    function obterValorDiaria() {
+        let configuracoes = {};
+
+        try {
+            configuracoes = JSON.parse(
+                localStorage.getItem("hotelPetConfiguracoes")
+            ) || {};
+        } catch (erro) {
+            configuracoes = {};
+        }
+
+        const valor = Number(configuracoes.valorDiaria);
+
+        // Se não houver configuração válida, utiliza R$ 50,00
+        return Number.isFinite(valor) && valor > 0 ? valor : 50;
+    }
 
     function dataParaISO(data) {
         if (!data || !data.includes("/")) return data;
@@ -94,6 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 reserva.saida
             );
 
+            // Utiliza o valor atual configurado pelo gerente
+            const valorDiaria = obterValorDiaria();
             const total = diarias * valorDiaria;
 
             const valores = [
@@ -254,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
             campoImagem.value = reserva.imagem || "";
         }
 
-        // Atualiza o valor total
+        // Atualiza o valor total com a diária definida nas Configurações
         function atualizarValor() {
 
             const diarias = calcularDiarias(
@@ -262,6 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 campoSaida.value
             );
 
+            const valorDiaria = obterValorDiaria();
             const total = diarias * valorDiaria;
 
             const elementoDiaria = document.getElementById("valorDiaria");
@@ -364,3 +384,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
