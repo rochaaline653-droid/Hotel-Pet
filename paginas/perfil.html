@@ -4,137 +4,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Pet - Editar Usuário</title>
+    <title>Hotel Pet - Meu Perfil</title>
     <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .dados-perfil {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dados-perfil label {
+            font-weight: bold;
+            color: #333;
+            margin-top: 12px;
+        }
+
+        .dados-perfil p {
+            background-color: #f5f7fa;
+            padding: 16px 18px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 0;
+            min-height: 22px;
+        }
+
+        .botoes-formulario {
+            margin-top: 35px;
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="topo">
+    <header class="topo">
 
-    <div class="logo">Hotel Pet</div>
+        <div class="logo">Hotel Pet</div>
 
-    <nav>
-        <a href="pets.html">Pets</a>
-        <a href="reservas.html">Reservas</a>
-        <a href="usuarios.html" class="ativo">Usuários</a>
-        <a href="configuracoes.html">Configurações</a>
-    </nav>
+        <nav>
+            <a href="pets.html">Pets</a>
+            <a href="reservas.html">Reservas</a>
+            <a href="usuarios.html">Usuários</a>
+            <a href="configuracoes.html">Configurações</a>
+        </nav>
 
-    <div class="usuario-topo">
-        <span>Gerente</span>
-        <a href="perfil.html">Perfil</a>
-        <a href="../index.html">Sair</a>
-    </div>
+        <div class="usuario-topo">
+            <span>Gerente</span>
+            <a href="perfil.html" class="ativo">Perfil</a>
+            <a href="../index.html">Sair</a>
+        </div>
 
-</header>
+    </header>
 
+    <main class="conteudo">
 
-<main class="conteudo">
+        <section class="formulario-centralizado">
 
-    <section class="formulario-centralizado">
+            <h1>Meu Perfil</h1>
 
-        <h1>
-            Editar Usuário
-        </h1>
+            <p>
+                Informações da gerente responsável pelo Hotel Pet.
+            </p>
 
-        <p>
-            O gerente pode alterar a função do usuário.
-        </p>
+            <div class="dados-perfil">
 
+                <label>Nome completo</label>
+                <p>Aline Rocha</p>
 
-        <form action="visualizar-usuario.html">
+                <label>E-mail</label>
+                <p>gerente@hotelpet.com</p>
 
-            <label for="nome">
-                Nome completo
-            </label>
+                <label>Telefone</label>
+                <p>(77) 99999-5555</p>
 
-            <input
-                type="text"
-                id="nome"
-                value="Ana Souza"
-            >
-
-
-            <label for="email">
-                E-mail
-            </label>
-
-            <input
-                type="email"
-                id="email"
-                value="ana@email.com"
-            >
-
-
-            <label for="telefone">
-                Telefone
-            </label>
-
-            <input
-                type="tel"
-                id="telefone"
-                value="(77) 99999-1111"
-            >
-
-
-            <label for="funcao">
-                Função
-            </label>
-
-            <select id="funcao">
-
-                <option selected>
-                    Cliente
-                </option>
-
-                <option>
-                    Funcionário
-                </option>
-
-                <option>
-                    Gerente
-                </option>
-
-            </select>
-
-
-            <label for="status">
-                Status
-            </label>
-
-            <select id="status">
-
-                <option selected>
-                    Ativo
-                </option>
-
-                <option>
-                    Inativo
-                </option>
-
-            </select>
-
-
-            <div class="botoes-formulario">
-
-                <a href="usuarios.html"
-                    class="botao-secundario">
-                    Cancelar
-                </a>
-
-                <button type="submit"
-                        class="botao">
-                    Salvar alterações
-                </button>
+                <label>Função</label>
+                <p>Gerente</p>
 
             </div>
 
-        </form>
+            <div class="botoes-formulario">
 
-    </section>
+                <a href="usuarios.html" class="botao">
+                    Voltar
+                </a>
 
-</main>
-<script src="../js/navegacao.js"></script>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../js/navegacao.js"></script>
+
 </body>
 </html>
